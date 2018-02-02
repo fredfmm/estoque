@@ -136,7 +136,7 @@ class ProdutoController extends Controller {
   }
 
   public function alteracao(){
-    Produto::where('id', Request::input('id'))->update(['nome' => Request::input('nome')]);
+    Produto::where('id', Request::input('id'))->update(['nome' => Request::input('nome'), 'valor' => Request::input('valor'), 'descricao' => Request::input('descricao'), 'quantidade' => Request::input('quantidade')]);
     return redirect()->action('ProdutoController@lista')->withInput(Request::only('nome'));
   }
 

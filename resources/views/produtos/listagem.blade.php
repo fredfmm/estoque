@@ -27,7 +27,7 @@
           </td>
           <td>
             <a href="{{action('ProdutoController@alterar', $p->id)}}">
-              <span class="glyphicon glyphicon-trash"></span>
+              <span class="glyphicon glyphicon-star"></span>
             </a>
           </td>
       </tr>
