@@ -24,3 +24,14 @@ Route::get('/produtos/mostra/{id}', 'ProdutoController@mostra')->where('id', '[0
 Route::get('/produtos/novo', 'ProdutoController@novo');
 
 Route::post('/produtos/adiciona', 'ProdutoController@adiciona');
+
+Route::post('/produtos/json', 'ProdutoController@listaJson');
+
+Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
+
+//exemplos de rotas nomeadas
+// Route::get('/produtos', [
+//   'as' => 'apelido',
+//   'uses' => 'ProdutoController@lista'
+// ]);
+// dessa forma o redirect pode ser return redirect()->route('apelido');
