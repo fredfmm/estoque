@@ -5,6 +5,7 @@ namespace estoque\Http\Controllers;
 use estoque\Produto;
 use Illuminate\Support\Facades\DB;
 use Request;
+use estoque\Http\Requests\ProdutosRequest;
 
 class ProdutoController extends Controller {
 
@@ -51,7 +52,20 @@ class ProdutoController extends Controller {
     return view('produtos.formulario');
   }
 
-  public function adiciona(){
+  public function adiciona(ProdutosRequest $request){
+
+    //as validacoes foram feitas em Request/ProdutosRequest.php
+    // $validator = Validator::make(
+    //   ['nome' => Reqest::input('nome')],
+    //   ['nome' => 'required|min:5']
+    // );
+    //
+    // if ($validator->fails()){
+    //   return redirect()->action('PordutoController@novo');
+    // }
+
+
+
     // $nome = Request::input('nome');
     // $descricao = Request::input('descricao');
     // $valor = Request::input('valor');
@@ -97,7 +111,7 @@ class ProdutoController extends Controller {
     // $produto->save;
 
     //outra opcao
-    Produto::create(Request::all());
+    Produto::create($request->all());
       return redirect()->action('ProdutoController@lista')->withInput(Request::only('nome'));
 
   }
@@ -112,5 +126,19 @@ class ProdutoController extends Controller {
     $produto->delete();
     return redirect()->action('ProdutoController@lista');
   }
+
+  public function alterar($id){
+    $produto = Produto::find($id);
+    if(empty($produto)){
+      return "Esse produto não existe.";
+    }
+    return view('produtos.alterar')->with('p', $produto);
+  }
+
+  public function alteracao(){
+    Produto::where('id', Request::input('id'))->update(['nome' => Request::input('nome')]);
+    return redirect()->action('ProdutoController@lista')->withInput(Request::only('nome'));
+  }
+
 
 }
