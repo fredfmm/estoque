@@ -9,6 +9,11 @@ use estoque\Http\Requests\ProdutosRequest;
 
 class ProdutoController extends Controller {
 
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+  
   public function lista(){
     // $produtos = DB::select('select * from produtos');
     $produtos = Produto::all();

@@ -27,6 +27,15 @@
             <ul class="nav navbar-nav navbar right">
               <li><a href="{{action('ProdutoController@lista')}}">Listagem</a></li>
               <li><a href="{{action('ProdutoController@novo')}}">Novo</a></li>
+              <li><a href="{{ route('logout') }}"
+                      onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                      Logout
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
+              </li>
             </ul>
           </div>
         </nav>

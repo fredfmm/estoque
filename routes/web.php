@@ -41,3 +41,7 @@ Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
 //   'uses' => 'ProdutoController@lista'
 // ]);
 // dessa forma o redirect pode ser return redirect()->route('apelido');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
