@@ -44,4 +44,5 @@ Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
 
 Auth::routes();
 
+
 Route::get('/home', 'HomeController@index')->name('home');

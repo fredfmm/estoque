@@ -13,7 +13,7 @@ class ProdutoController extends Controller {
   {
       $this->middleware('auth');
   }
-  
+
   public function lista(){
     // $produtos = DB::select('select * from produtos');
     $produtos = Produto::all();
